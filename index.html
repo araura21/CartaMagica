@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
+
+    <script src="js/aplicativo.js" defer></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <title>Carta Mágica</title>
+</head>
+<body>
+    <!-- Título centrado -->
+    <div class="centered-title">
+        <img src="img/titulo.png" class="centered-image">
+        <h2>Carta dirigida a:</h2>
+    </div>
+
+    <!-- Contenedor principal para el destinatario y la carta -->
+    <div class="destinatario">
+        <!-- Galería de imágenes alineadas a la izquierda -->
+        <div class="recipient-gallery">
+            <img src="img/padre.png" alt="Papá" data-recipient="Papá" class="small-image">
+            <img src="img/madre.png" alt="Mamá" data-recipient="Mamá" class="small-image">
+            <img src="img/anadir-amigo.jpeg" alt="Añadir Amigo" class="small-image-anadir">
+        </div>
+
+        <!-- Contenedor de la carta y controles a la derecha -->
+        <div class="letter-container">
+            <!-- Campo de destinatario -->
+            <div class="destinatario-label">
+                <input type="text" id="recipient" placeholder="Destinatario" readonly>
+            </div>
+
+            <!-- Área de texto para la carta -->
+            <div class="letter-text">
+                <textarea id="output" placeholder="Tu carta aparecerá aquí..."></textarea>
+            </div>
+
+
+            <!-- Controles adicionales -->
+            <div class="controls">
+                <button id="start-btn">
+                    <img src="img/microfono.png" alt="Hablar" class="button-icon-hablar">
+                </button>
+                <button id="listen-text-btn">
+                    <img src="img/sonido.png" alt="Escuchar" class="button-icon">
+                </button>
+                <button id="reset-text-btn">
+                    <img src="img/reiniciar.png" alt="Reiniciar" class="button-icon">
+                </button>
+                <button id="export-pdf-btn">
+                    <img src="img/pdf.png" alt="PDF" class="button-icon">
+                </button>
+                <button id="send-email-btn">
+                    <img src="img/compartir.png" alt="Enviar por correo" class="button-icon">
+                </button>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
