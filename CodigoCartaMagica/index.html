@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <script src="js/aplicativo.js" defer></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <title>Carta Mágica</title>
+
+</head>
+<body>
+    <img src="img/titulo.png" alt="titulo" class="titulo-img">
+	<div class="parent">
+	<div class="destinatario"> 
+		<label for="recipient">Destinatario:</label>
+        <input type="text" id="recipient" placeholder=" " readonly>
+		
+		<button id="help-btn" class="help-button">
+        <img src="img/interrogacion.png" alt="Ayuda" class="help-icon">
+        </button>
+        <div class="recipient-gallery">
+            <h3>Selecciona una imagen</h3>
+        	<img src="img/padre.png" alt="Papá" data-recipient="Papá" class="small-image">Papá
+        	<img src="img/img_madre.png" alt="Mamá" data-recipient="Mamá" class="small-image">Mamá
+        </div>
+        <br>
+		<div class="controls">
+            <button id="add-btn">
+                <img src="img/anadir.png" alt="Añadir" class="button-icon">Añadir
+            </button>
+		</div>
+		
+	</div>
+		 <!-- Ventana emergente para añadir destinatario -->
+        <div id="addRecipientModal" class="modal">
+            <div class="modal-content">
+                <h2>Añadir nuevo destinatario</h2>
+                <label for="new-name">Nombre:</label>
+                <input type="text" id="new-name">
+
+                <label for="new-email">Correo:</label>
+                <input type="email" id="new-email">
+
+                <p>Seleccionar imagen:</p>
+                <input type="radio" id="male-pic" name="gender-pic" value="img/hombre.png">
+                <label for="male-pic">Hombre</label>
+                <input type="radio" id="female-pic" name="gender-pic" value="img/mujer.png">
+                <label for="female-pic">Mujer</label>
+
+                <br><br>
+                <button id="save-recipient-btn">Guardar</button>
+                <button id="close-modal-btn">Cerrar</button>
+            </div>
+        </div>
+
+	<div class="carta"> 
+		<h1>Tu carta: </h1>
+		<p>Presiona el botón "Hablar" para comenzar tu dictado</p>
+        <textarea id="output" placeholder="Tu carta aparecerá aquí..."></textarea>
+		
+		<div class="controls">
+            <button id="start-btn">
+                <img src="img/microfono.png" alt="Hablar" class="button-icon">Hablar
+            </button>
+            <button id="stop-btn" disabled>
+                <img src="img/detener.png" alt="Detener" class="button-icon">Pausar
+            </button>
+            <button id="listen-text-btn">
+                <img src="img/sonido.png" alt="Escuchar" class="button-icon">Escuchar
+            </button>
+            <button id="reset-text-btn">
+                <img src="img/reiniciar.png" alt="Reiniciar" class="button-icon">Reiniciar
+            </button>
+            
+        </div>
+		<div id="timer-display" class="timer-display">00:30</div>
+	</div>
+	<div class="estilos"> 
+		<h3>Personaliza tu carta</h3>
+			<p>Estilos de texto</p>
+            <div id="estilos-container">
+                <div class="font-options">
+                    <div class="font-box" data-font="Arial" style="font-family: Arial;">Arial</div>
+                    <div class="font-box" data-font="Georgia" style="font-family: Georgia;">Georgia</div>
+                    <div class="font-box" data-font="Verdana" style="font-family: Verdana;">Verdana</div>
+                    <div class="font-box" data-font="Courier New" style="font-family: 'Courier New';">Courier New</div>
+                </div>
+            </div>
+			<p>Estilos de fondo</p>
+            <div class="background-options">
+                <div class="background-box" data-color="white" style="background-color: white;"></div>
+                <div class="background-box" data-color="lightgreen" style="background-color: lightgreen;"></div>
+                <div class="background-box" data-color="lightblue" style="background-color: lightblue;"></div>
+                <div class="background-box" data-color="lightpink" style="background-color: lightpink;"></div>
+            </div>
+		
+		<!-- Botón para abrir la ventana emergente de fondos -->
+         <p>Fondos temáticos</p>
+            <button id="open-background-modal-btn"><img src="img/mas.png" alt="mas" class="button-icon" />
+            </button>
+            
+
+
+            <!-- Ventana emergente para elegir fondos -->
+            <div id="backgroundModal" class="modal">
+                <div class="modal-content">
+                    <h2>Elige un fondo</h2>
+                    <div class="background-image-option">
+                        <h3>Fondo Cumpleaños</h3>
+                        <img src="img/fondocumpleanos.png" alt="Fondo  Cumpleaños" class="background-image" />
+                    </div>
+                    <div class="background-image-option">
+                        <h3>Fondo Agradecimiento</h3>
+                        <img src="img/fondoagradecimiento.png" alt="Fondo 2" class="background-image" />
+                    </div>
+                    <div class="background-image-option">
+                        <h3>Fondo Navidad</h3>
+                        <img src="img/fondonavidad.png" alt="Fondo 3" class="background-image" />
+                    </div>
+                    <div class="background-image-option">
+                        <h3>Fondo vacaciones</h3>
+                        <img src="img/fondo4.png" alt="Fondo 4" class="background-image" />
+                    </div>
+                    <div class="background-image-option">
+                        <h3>Fondo </h3>
+                        <img src="img/fondo5.png" alt="Fondo 5" class="background-image" />
+                    </div>
+                    <button id="close-background-modal-btn">Cerrar</button>
+                </div>
+            </div>
+        
+		<div class="controls">
+            <button id="export-pdf-btn">
+                <img src="img/pdf.png" alt="PDF" class="button-icon">PDF
+            </button>
+            <button id="send-email-btn">
+                <img src="img/mail.png" alt="Enviar por correo" class="button-icon">Correo
+            </button>
+        </div>
+		
+	</div>
+
+</div>	
+</body>
+</html>
